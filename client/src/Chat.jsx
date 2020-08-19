@@ -7,7 +7,7 @@ import {
   gql,
 } from "@apollo/client";
 
-import { Container } from "shards-react";
+import { Container, Row, Col, FormInput, Button } from "shards-react";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/",
@@ -40,10 +40,26 @@ const Messages = ({ user }) => {
             paddingBottom: "1em",
           }}
         >
+          {user !== messageUser && (
+            <div
+              style={{
+                height: 50,
+                width: 50,
+                marginRight: "0.5em",
+                border: "2px solid grey",
+                borderRadius: 25,
+                textAlign: "center",
+                fontSize: "18px",
+                paddingTop: "10px",
+              }}
+            >
+              {messageUser.slice(0, 2).toUpperCase()}
+            </div>
+          )}
           <div
             style={{
               background: user === messageUser ? "blue" : "green",
-              color: user === messageUser ? "white" : "black",
+              color: "white",
               padding: "1em",
               borderRadius: "1em",
               maxWidth: "60%",
@@ -59,7 +75,7 @@ const Messages = ({ user }) => {
 
 const Chat = () => (
   <Container>
-    <Messages user="John" />
+    <Messages user="Me" />
   </Container>
 );
 
