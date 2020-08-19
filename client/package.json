@@ -9,8 +9,7 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Jack Herrington",
-    "email": "jherr@pobox.com"
+    "name": "Brian"
   },
   "devDependencies": {
     "@babel/core": "7.9.6",
@@ -25,7 +24,10 @@
     "webpack-dev-server": "3.11.0"
   },
   "dependencies": {
+    "@apollo/client": "^3.1.3",
+    "graphql": "^15.3.0",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "shards-react": "^1.0.3"
   }
 }
