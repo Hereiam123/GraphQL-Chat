@@ -7,6 +7,8 @@ import {
   gql,
 } from "@apollo/client";
 
+import { Container } from "shards-react";
+
 const client = new ApolloClient({
   uri: "http://localhost:4000/",
   cache: new InMemoryCache(),
@@ -27,13 +29,38 @@ const Messages = ({ user }) => {
   if (!data) {
     return null;
   }
-  return JSON.stringify(data);
+  return (
+    <>
+      {data.messages.map(({ id, user: messageUser, content }, index) => (
+        <div
+          key={index}
+          style={{
+            display: "flex",
+            justifyContent: user === messageUser ? "flex-end" : "flex-start",
+            paddingBottom: "1em",
+          }}
+        >
+          <div
+            style={{
+              background: user === messageUser ? "blue" : "green",
+              color: user === messageUser ? "white" : "black",
+              padding: "1em",
+              borderRadius: "1em",
+              maxWidth: "60%",
+            }}
+          >
+            {content}
+          </div>
+        </div>
+      ))}
+    </>
+  );
 };
 
 const Chat = () => (
-  <div>
-    <Messages user="Me" />
-  </div>
+  <Container>
+    <Messages user="John" />
+  </Container>
 );
 
 export default () => (
