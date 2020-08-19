@@ -73,11 +73,37 @@ const Messages = ({ user }) => {
   );
 };
 
-const Chat = () => (
-  <Container>
-    <Messages user="Me" />
-  </Container>
-);
+const Chat = () => {
+  const [state, stateSet] = React.useState({
+    user: "Jack",
+    content: "",
+  });
+  return (
+    <Container>
+      <Messages user={state.user} />
+      <Row>
+        <Col xs={2} style={{ padding: 0 }}>
+          <FormInput
+            label="User"
+            value={state.user}
+            onChange={(e) => {
+              stateSet({ ...state, user: e.target.value });
+            }}
+          />
+        </Col>
+        <Col xs={8}>
+          <FormInput
+            label="Content"
+            value={state.content}
+            onChange={(e) => {
+              stateSet({ ...state, content: e.target.value });
+            }}
+          />
+        </Col>
+      </Row>
+    </Container>
+  );
+};
 
 export default () => (
   <ApolloProvider client={client}>
