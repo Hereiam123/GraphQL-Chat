@@ -32,7 +32,7 @@ const ADD_MESSAGE = gql`
 `;
 
 const Messages = ({ user }) => {
-  const { data } = useQuery(GET_MESSAGES);
+  const { data } = useQuery(GET_MESSAGES, { pollInterval: 500 });
   if (!data) {
     return null;
   }
